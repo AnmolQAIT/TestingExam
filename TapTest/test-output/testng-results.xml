@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="3" passed="3">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="14841" started-at="2018-07-09T15:54:18Z" finished-at="2018-07-09T15:54:33Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="14841" started-at="2018-07-09T15:54:18Z" finished-at="2018-07-09T15:54:33Z">
+      <class name="testing.NewTest">
+        <test-method status="PASS" signature="ainvokebrowser()[pri:0, instance:testing.NewTest@c4c815]" name="ainvokebrowser" duration-ms="11036" started-at="2018-07-09T21:24:18Z" finished-at="2018-07-09T21:24:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ainvokebrowser -->
+        <test-method status="PASS" signature="bbasicauth()[pri:0, instance:testing.NewTest@c4c815]" name="bbasicauth" duration-ms="1970" started-at="2018-07-09T21:24:29Z" finished-at="2018-07-09T21:24:31Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- bbasicauth -->
+        <test-method status="PASS" signature="checkhover()[pri:0, instance:testing.NewTest@c4c815]" name="checkhover" duration-ms="1809" started-at="2018-07-09T21:24:31Z" finished-at="2018-07-09T21:24:33Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkhover -->
+      </class> <!-- testing.NewTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
