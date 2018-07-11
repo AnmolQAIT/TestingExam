@@ -6,34 +6,48 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
 public class Page {
 WebDriver driver;
 JavascriptExecutor js;
 boolean str1,str2;
+
 public Page(WebDriver driver,JavascriptExecutor js)
 {
 	this.js=js;
 	this.driver=driver;
 }
 
-public void basic_auth() throws IOException
+public Page back()
 {
-	driver.findElement(By.xpath("//div[@id='content']//ul//li[2]//a")).click();
-	Runtime.getRuntime().exec("C:\\Users\\anmol\\OneDrive\\Desktop\\Autoit\\HandleAuthentication.exe");
+driver.findElement(By.xpath("//div[@class='row'][2]//a[1]")).click();		
+return new Page(driver,js);
+}
+
+public String basic_auth() 
+{
+//	driver.findElement(By.xpath("//div[@id='content']//ul//li[2]//a")).click();
+//	driver.get("http://admin:admin@10.0.31.161:9292/basic_auth");
+//    return driver.getCurrentUrl();
+	driver.get("http://10.0.31.161:9292/");
+	driver.get("http://admin:admin@10.0.31.161:9292/basic_auth");
+	return driver.findElement(By.xpath("//div[@class='example']//p")).getText();
+	
 }
 
 public boolean image1broken()
 {
 	driver.get("http://asdf.jpg/");
-	Assert.assertEquals(driver.findElement(By.xpath("//div[@id='main-message']//h1")).getText(),"This site canâ€™t be reached");
+	Assert.assertEquals(driver.findElement(By.xpath("//div[@id='main-message']//h1")).getText(),"This site can’t be reached");
 	return true;
 }
 public boolean image2broken()
 {
 	driver.get("http://hjkl.jpg/");
-	Assert.assertEquals(driver.findElement(By.xpath("//div[@id='main-message']//h1")).getText(),"This site canâ€™t be reached");
+	Assert.assertEquals(driver.findElement(By.xpath("//div[@id='main-message']//h1")).getText(),"This site can’t be reached");
 	return true;
 }
 public boolean broken_image() 
@@ -85,4 +99,18 @@ public Dynamiccontrol control()
 	return new Dynamiccontrol(driver,js);
 }
 
+public StatuscodesPage statuscode()
+{
+	driver.findElement(By.xpath("//div[@id='content']//ul//child::a[@href='/status_codes']")).click();
+	return new StatuscodesPage(driver,js);
+//	driver.findElement(By.xpath("////a[@href='status_codes/404']")).click();
+//	return new status(driver,js);
+}
+
+
+public TinyMcePage texteditorclick()
+{
+	driver.findElement(By.xpath("//a[@href='/tinymce']")).click();
+	return new TinyMcePage(driver,js);
+}
 }

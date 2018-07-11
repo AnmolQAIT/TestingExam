@@ -1,8 +1,6 @@
 package testing;
 
 import java.io.IOException;
-
-
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,15 +10,16 @@ import org.testng.annotations.*;
 public class NewTest {
   DragDrop d;
   Page p;
+  TinyMcePage tinymce;
   Dynamic dy;
- 
+  status sc;
   Hover h;
   CheckBox c;
   Droplist l;
   Dynamiccontrol dc;
   WebDriver driver;
   JavascriptExecutor js;
-  
+  StatuscodesPage scodes;
   @Test(priority=1)
   public void ainvokebrowser()
   {
@@ -90,4 +89,30 @@ public class NewTest {
 	  p=dc.back();
   }
   	
+  @Test(priority=9)
+  public void statuscodescheck()
+  {
+	  scodes=p.statuscode();
+	  Assert.assertEquals(scodes.isstatuscodespage(),"http://10.0.31.161:9292/status_codes");
+	 sc= scodes.clickon404();
+	//  Assert.assertEquals(sc.pageisdisplayedwith404(),"This page returned a 404 status code.");
+	 System.out.println("The Status code is: "+ sc.statuscodecheck());
+      Assert.assertEquals(sc.statuscodecheck(),404);
+      p=sc.back();
+  }
+  
+//  @Test(priority=10)
+//  public void authenticate()
+//  {
+//	 Assert.assertEquals(p.basic_auth(),"Congratulations! You must have the proper credentials.");
+//	 p.back();
+//  }
+  
+  @Test(priority=10)
+  public void texteditor()
+  {
+	tinymce=p.texteditorclick();  
+	Assert.assertEquals(tinymce.istinypage(),"http://10.0.31.161:9292/tinymce");
+	tinymce.changeText();
+  }
 }
